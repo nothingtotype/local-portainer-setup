@@ -1,0 +1,16 @@
+# install prometheus container 
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      # Maps ${PROM_PORT} from host to container's standard 9090
+      - "${PROM_PORT}:9090"
+    volumes:
+      # Maps the path defined in your .env file
+      - ${PROM_CONFIG_PATH}:/etc/prometheus/prometheus.yml
+      - prometheus-data:/prometheus
+    restart: unless-stopped
+
+volumes:
+  prometheus-data:
