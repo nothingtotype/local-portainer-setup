@@ -1,0 +1,22 @@
+# the following docker compose file runs the protainer agent on a host
+# it won't run in edge mode so it's only used to control docker instances in the LAN
+services:
+  portainer-agent:
+    container_name: portainer-agent
+    image: portainer/portainer-agent:2.33.6
+    restart: always
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lig/docker/volumes:/var/lib/docker/volumes
+      - /:/host
+    ports:
+      - ${PORTAINER_AGENT_PORT}:9001 
+
+volumes:
+  portainer_data:
+    name: portainer_data
+
+networks:
+  default:
+    name: portainer_network
