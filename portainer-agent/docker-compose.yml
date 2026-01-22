@@ -3,7 +3,7 @@
 services:
   portainer-agent:
     container_name: portainer-agent
-    image: portainer/portainer-agent:2.33.6
+    image: portainer/agent:latest
     restart: always
     privileged: true
     volumes:
