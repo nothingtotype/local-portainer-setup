@@ -6,13 +6,13 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=$TZ
-      - WEBUI_PORT=8081
+      - WEBUI_PORT=$PORT
       - TORRENTING_PORT=6881
     volumes:
       - $CONFIG:/config
       - $DATA:/data
     ports:
-      - 8081:8080
+      - $PORT:8080
       - 6881:6881
       - 6881:6881/udp
     stop_grace_period: "10s" #optional
