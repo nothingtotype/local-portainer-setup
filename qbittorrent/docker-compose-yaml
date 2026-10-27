@@ -1,16 +1,16 @@
 services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
-    container_name: qbittorrent
+    container_name: rokcy_qbittorrent
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=America/Mexico_CitY
+      - TZ=$TZ
       - WEBUI_PORT= 8081
       - TORRENTING_PORT=6881
     volumes:
-      - /home/ceim_admin/qbittorrent:/config
-      - /mnt/scratch/qb:/data
+      - $CONFIG/config
+      - $DATA:/data
     ports:
       - 8081:8080
       - 6881:6881
