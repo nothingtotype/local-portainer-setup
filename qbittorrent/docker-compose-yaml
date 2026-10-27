@@ -6,10 +6,10 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=$TZ
-      - WEBUI_PORT= 8081
+      - WEBUI_PORT=8081
       - TORRENTING_PORT=6881
     volumes:
-      - $CONFIG/config
+      - $CONFIG:/config
       - $DATA:/data
     ports:
       - 8081:8080
